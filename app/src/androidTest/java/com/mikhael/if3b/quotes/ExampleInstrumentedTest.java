@@ -1,4 +1,4 @@
-package com.mikhael.if3b.myapplication;
+package com.mikhael.if3b.quotes;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.mikhael.if3b.myapplication", appContext.getPackageName());
+        assertEquals("com.mikhael.if3b.quotes", appContext.getPackageName());
     }
 }

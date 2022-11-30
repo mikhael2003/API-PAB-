@@ -1,4 +1,4 @@
-package com.mikhael.if3b.myapplication;
+package com.mikhael.if3b.quotes;
 
 import org.junit.Test;
 
