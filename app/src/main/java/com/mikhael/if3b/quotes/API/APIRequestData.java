@@ -9,5 +9,5 @@ import retrofit2.http.GET;
 
 public interface APIRequestData {
     @GET("quotes")
-    Call<List<QuotesModel>> ardGet();
+    Call<List<QuotesModel>> requestData();
 }
