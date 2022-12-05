@@ -36,7 +36,9 @@ public class AdapterQuotes {
 
         @Override
         public void onBindViewHolder(@NonNull ViewHolderQuotes holder, int position) {
-
+            QuotesModel QM = listQuotes.get(position);
+            holder.tvQuotes.setText(QM.getText());
+            holder.tvAuthor.setText(QM.getAuthor());
         }
 
         @Override
