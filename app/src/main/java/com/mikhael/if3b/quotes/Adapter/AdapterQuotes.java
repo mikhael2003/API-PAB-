@@ -9,51 +9,49 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.mikhael.if3b.quotes.Activity.MainActivity;
 import com.mikhael.if3b.quotes.Model.QuotesModel;
 import com.mikhael.if3b.quotes.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterQuotes {
+public class AdapterQuotes extends RecyclerView.Adapter<AdapterQuotes.ViewHolderQuotes> {
+    private List<QuotesModel> listQuotes = new ArrayList<>();
+    private Context ctx;
 
-    public class adapterQuotes extends RecyclerView.Adapter<adapterQuotes.ViewHolderQuotes> {
-        private List<QuotesModel> listQuotes = new ArrayList<>();
-        private Context ctx;
+    public AdapterQuotes(List<QuotesModel> listQuotes, Context ctx) {
+        this.listQuotes = listQuotes;
+        this.ctx = ctx;
+    }
 
-        public adapterQuotes(List<QuotesModel> listQuotes, Context ctx) {
-            this.listQuotes = listQuotes;
-            this.ctx = ctx;
-        }
+    @NonNull
+    @Override
+    public ViewHolderQuotes onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View varView = LayoutInflater.from(ctx).inflate(R.layout.item_quotes, parent, false);
+        return new ViewHolderQuotes(varView);
+    }
 
-        @NonNull
-        @Override
-        public ViewHolderQuotes onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View varView = LayoutInflater.from(ctx).inflate(R.layout
-                    .item_quotes, parent, false );
-            return new ViewHolderQuotes(varView);
-        }
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolderQuotes holder, int position) {
+        QuotesModel QM = listQuotes.get(position);
+        holder.tvQuotes.setText(QM.getText());
+        holder.tvAuthor.setText(QM.getAuthor());
+    }
 
-        @Override
-        public void onBindViewHolder(@NonNull ViewHolderQuotes holder, int position) {
-            QuotesModel QM = listQuotes.get(position);
-            holder.tvQuotes.setText(QM.getText());
-            holder.tvAuthor.setText(QM.getAuthor());
-        }
+    @Override
+    public int getItemCount() {
+        return listQuotes.size();
+    }
 
-        @Override
-        public int getItemCount() {
-            return 0;
-        }
+    public class ViewHolderQuotes extends RecyclerView.ViewHolder {
+        TextView tvQuotes, tvAuthor;
 
-        public class ViewHolderQuotes extends RecyclerView.ViewHolder {
-            TextView tvQuotes, tvAuthor;
-
-            public ViewHolderQuotes(@NonNull View itemView) {
-                super(itemView);
-                tvQuotes = itemView.findViewById(R.id.tv_quotes);
-                tvAuthor = itemView.findViewById(R.id.tv_author);
-            }
+        public ViewHolderQuotes(@NonNull View itemView) {
+            super(itemView);
+            tvQuotes = itemView.findViewById(R.id.tv_quotes);
+            tvAuthor = itemView.findViewById(R.id.tv_author);
         }
     }
+
 }
